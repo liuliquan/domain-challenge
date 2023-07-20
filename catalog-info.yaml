@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: domain-challenge
+  tags:
+    - typescript
+  annotations:
+    backstage.io/source-location: url:https://github.com/topcoder-platform/domain-challenge
+    github.com/project-slug: topcoder-platform/domain-challenge
+spec:
+  type: service
+  owner: backstage-dev
+  lifecycle: production
