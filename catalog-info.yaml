@@ -2,12 +2,49 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: domain-challenge
+  title: Domain Challenge
+  description:  Domain Challenge
   tags:
     - typescript
+  links:
+    - url: https://github.com/topcoder-platform/domain-challenge
+      title: Github Repo
+      icon: web
+    - url: https://app.circleci.com/pipelines/github/topcoder-platform/domain-challenge
+      title: CircleCI
+      icon: web
   annotations:
     backstage.io/source-location: url:https://github.com/topcoder-platform/domain-challenge
     github.com/project-slug: topcoder-platform/domain-challenge
+    circleci.com/project-slug: github/topcoder-platform/domain-challenge
 spec:
   type: service
-  owner: backstage-dev
+  owner: platform
   lifecycle: production
+  system: Challenge-Core
+  providesApis:
+    - domain-challenge
+  consumesApis:
+    - bus-api
+    - anticorruption-layer
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: domain-challenge
+spec:
+  type: openapi
+  lifecycle: production
+  owner: platform
+  system: Challenge-Core
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Domain Challenge
+      version: 1.0.0
+    paths:
+      /health:
+        get:
+          responses:
+            '200':
+              description: ""
